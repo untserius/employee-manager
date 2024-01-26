@@ -1,5 +1,6 @@
 package com.serius.employeemanager.service;
 
+import com.serius.employeemanager.exception.UserNotFoundException;
 import com.serius.employeemanager.model.Employee;
 import com.serius.employeemanager.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class EmployeeService {
     }
 
     public Employee findEmployeeById(Long id){
-        return employeeRepo.findEmployeeById(id).
-                orElseThrow(() -> new UserNotFoundException ("User by id " + id + " was not found"));
+        return employeeRepo.findEmployeeById(id)
+                .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
 
     public void deleteEmployee(Long id){
