@@ -1,0 +1,7 @@
+{
+    "email": "serius0000@gmail.com",
+    "imageUrl": "jetbrains://idea/navigate/reference?project=employeemanager&path=static/images/01.png",
+    "jobTitle": "API Tester",
+    "name": "Serius",
+    "phone": "0000000000"
+}
