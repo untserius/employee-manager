@@ -26,7 +26,7 @@ public class Employee implements Serializable {
         this.email = email;
         this.jobTitle = jobTitle;
         this.phone = phone;
-        this.imageUrl = imageUrl;
+//        this.imageUrl = imageUrl;
         this.employeeCode = employeeCode;
     }
     public long getId() {
