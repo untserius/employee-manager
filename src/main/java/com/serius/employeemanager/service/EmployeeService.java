@@ -5,6 +5,7 @@ import com.serius.employeemanager.model.Employee;
 import com.serius.employeemanager.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -36,6 +37,7 @@ public class EmployeeService {
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
 
+    @Transactional
     public void deleteEmployee(Long id){
         employeeRepo.deleteEmployeeById(id);
     }
