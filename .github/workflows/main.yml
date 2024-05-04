@@ -35,7 +35,7 @@ jobs:
       - name: Run Spring Boot tests
         run: mvn test --file pom.xml
 
-      - name: Install Node.js
+      - name: Install Node.js and NPM
         uses: actions/setup-node@v2
         with:
           node-version: '18'
@@ -45,6 +45,8 @@ jobs:
 
       - name: Build Angular application
         working-directory: employeemanagerapp
-        run: ng build --configuration=production
+        run: |
+          npm install
+          ng build --configuration=production
       
           
