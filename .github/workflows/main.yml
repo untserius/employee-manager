@@ -27,7 +27,7 @@ jobs:
   deploy:
     needs: build
     runs-on: [aws-ec2]
-    secrets:
+    env:
       MYSQL_HOST: ${{secrets.MYSQL_HOST}}
       MYSQL_USER: ${{secrets.MYSQL_USER}}
       MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
@@ -42,9 +42,9 @@ jobs:
           docker run -d \
             -p 8080:8080 \
             --name employee-manager-container \
-            --secret MYSQL_HOST \
-            --secret MYSQL_USER \
-            --secret MYSQL_PASSWORD \
-            --secret MYSQL_DATABASE \
+            -e MYSQL_HOST=$MYSQL_HOST \
+            -e MYSQL_USER=$MYSQL_USER \
+            -e MYSQL_PASSWORD=$MYSQL_PASSWORD \
+            -e MYSQL_DATABASE=$MYSQL_DATABASE \
             seriushub/employeemanager
 
