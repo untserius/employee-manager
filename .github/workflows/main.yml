@@ -21,30 +21,18 @@ jobs:
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build Docker Image
         run: docker build -t seriushub/employeemanager .
-      - name: Publish image to Docker Hub
+      - name: Publish image to Docker Hub.
         run: docker push seriushub/employeemanager:latest
 
   deploy:
     needs: build
     runs-on: [aws-ec2]
-    env:
-      MYSQL_HOST: ${{secrets.MYSQL_HOST}}
-      MYSQL_USER: ${{secrets.MYSQL_USER}}
-      MYSQL_PASSWORD: ${{secrets.MYSQL_PASSWORD}}
-      MYSQL_DATABASE: ${{secrets.MYSQL_DATABASE}}
+
     steps:
       - name: Pull Images form Docker Hub
         run: docker pull seriushub/employeemanager:latest
       - name: Delete Old Container
         run: docker rm -f employee-manager-container
       - name: Run Docker Container
-        run: |
-          docker run -d \
-            -p 8080:8080 \
-            --name employee-manager-container \
-            -e MYSQL_HOST=$MYSQL_HOST \
-            -e MYSQL_USER=$MYSQL_USER \
-            -e MYSQL_PASSWORD=$MYSQL_PASSWORD \
-            -e MYSQL_DATABASE=$MYSQL_DATABASE \
-            seriushub/employeemanager
+        run: docker run -d -p 8080:8080 --name employee-manager-container seriushub/employeemanager
 
