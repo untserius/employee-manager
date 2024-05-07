@@ -9,7 +9,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://employeemanagerbucket.s3-website.ap-south-1.amazonaws.com/")
+                .allowedOrigins("http://employeemanagerbucket.s3-website.ap-south-1.amazonaws.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("Content-Type", "X-Auth-Token", "Authorization")
                 .exposedHeaders("header1", "header2")
