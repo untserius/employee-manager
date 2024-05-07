@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
+@CrossOrigin(origins = "http://employeemanagerbucket.s3-website.ap-south-1.amazonaws.com")
 public class EmployeeResource {
     private final EmployeeService employeeService;
 
